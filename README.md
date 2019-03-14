@@ -23,7 +23,7 @@ Data: A spreadsheet, [mcf210023-sup-0001-TableS1-S24.xlsx](https://afspubs.onlin
 This is an [R](https://www.r-project.org/) language project. You can install the latest (development) version of this `statusAndTrends` package from [GitHub](./) using the `install_github` command in R:
 
 ``` r
-remotes::install_github("int-salmon-data-lab/statusAndTrends")
+remotes::install_github("int-salmon-data-lab/statusAndTrends", build = TRUE, build_opts = "")
 ```
 
 ## License

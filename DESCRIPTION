@@ -21,6 +21,7 @@ Imports:
     tidyr (>= 0.8.3),
     dplyr (>= 0.8.0.1)
 Suggests: 
-    testthat
+    testthat,
+    remotes
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
