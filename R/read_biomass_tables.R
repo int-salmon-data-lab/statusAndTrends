@@ -104,9 +104,10 @@ read_biomass_st3 <- function() {
 #' @description Returns a tibble containing data from Summary Table 4 of
 #'     the biomass data, which has total natural-origin salmon (millions of fish) 
 #'     returning to regions of Asia and North America, 1952-2015.
-#' @details The spreadsheet does not have a Year column. It is only implied.
-#'     Therefore, we inject the year column from ST3, because all 4 Summary Tables
-#'     ST1, ST2, ST3, ST4 should have a Year column with the same years.
+#' @details The spreadsheet does not have a Year column in Summary Table 4.
+#'     It is only implied. Therefore, we inject the year column from ST3, 
+#'     because all 4 Summary Tables ST1, ST2, ST3, ST4 should have 
+#'     a Year column with the same years across all tables.
 #' @return tibble with 5 columns of data:
 #'    \enumerate{
 #'      \item Pink
