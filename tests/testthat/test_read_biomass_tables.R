@@ -54,3 +54,7 @@ test_that("Summary Table 4 Total in 2015 is 636.0", {
     magrittr::extract2("Total")
   expect_equal(actual_total, 636.0, tolerance = TOLERANCE)
 })
+
+test_that("Summary Table 4 has same years as ST 3", {
+  expect_equal(read_biomass_st3()$Year, read_biomass_st4()$Year)
+})
