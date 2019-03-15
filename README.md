@@ -1,5 +1,12 @@
 # Salmon Status and Trends
+
 Datasets and related knowledge from [International Year of the Salmon](https://yearofthesalmon.org/) (IYS) [Workshop on Salmon Status and Trends](https://yearofthesalmon.org/salmon_event/international-year-of-salmon-iys-workshop-on-salmon-status-and-trends/). The workshop was held 23-24 January 2019 in Vancouver, BC, Canada.
+
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+
+> Disclaimer: this package is experimental and just getting started in development. Read the [NEWS.md](NEWS.md) for recent updates and current plans.
+
+---
 
 **Table of Contents**
 
@@ -8,6 +15,8 @@ Datasets and related knowledge from [International Year of the Salmon](https://y
     1. [Numbers and Biomass of Salmonids in the North Pacific Ocean](#numbers-and-biomass-of-salmonids-in-the-north-pacific-ocean)
 1. [Installation](#installation)
 1. [License](#license)
+
+---
 
 ## Description
 This is a prototype for loading and analyzing data about salmon, across species and across geographical areas. We use a graph database to represent data _and_ metadata joined together in the same database.
