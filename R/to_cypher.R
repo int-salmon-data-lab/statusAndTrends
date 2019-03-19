@@ -11,13 +11,19 @@ build_datum_create_strings <- function(year, value, unit = 'count', place_label)
 }
 
 #' @export
+scale_values <- function(summary_table, scale = 1000000L) {
+  scaled_value_cols <- summary_table %>% 
+    dplyr::select(-Year) %>% 
+    magrittr::multiply_by(scale) %>% 
+    round()
+  return(dplyr::bind_cols(dplyr::select(summary_table, Year), scaled_value_cols))
+}
+
+#' @export
 abundance_to_cypher_datum <- function(
   dataset_label = "Supplementary Table 1"
 ) {
-  st1 <- read_biomass_st1()
-  st1_data_cols <- st1 %>% 
-    dplyr::select(-Year)
-  st1_scaled_cols <- round(st1_data_cols * 1000000L)
-  st1_scaled <- dplyr::bind_cols(st1$Year, st1_scaled_cols)
-  
+  st1 <- read_biomass_st1() %>% 
+    scale_values(scale = 1000000L)
+
 }
