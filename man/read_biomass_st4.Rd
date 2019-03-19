@@ -22,7 +22,8 @@ the biomass data, which has total natural-origin salmon (millions of fish)
 returning to regions of Asia and North America, 1952-2015.
 }
 \details{
-The spreadsheet does not have a Year column. It is only implied.
-Therefore, we inject the year column from ST3, because all 4 Summary Tables
-ST1, ST2, ST3, ST4 should have a Year column with the same years.
+The spreadsheet does not have a Year column in Summary Table 4.
+It is only implied. Therefore, we inject the year column from ST3,
+because all 4 Summary Tables ST1, ST2, ST3, ST4 should have
+a Year column with the same years across all tables.
 }

@@ -1,4 +1,5 @@
 library(readxl)
+library(dplyr)
 
 ISDL_BIOMASS_DIR <- "North-Pacific-Salmon-Abundance-and-Biomass-Data"
 ISDL_BIOMASS_SPREADSHEET <- "mcf210023-sup-0001-tables1-s24.xlsx"
