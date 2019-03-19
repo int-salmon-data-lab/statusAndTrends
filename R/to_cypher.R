@@ -20,10 +20,22 @@ scale_values <- function(summary_table, scale = 1000000L) {
 }
 
 #' @export
-abundance_to_cypher_datum <- function(
-  dataset_label = "Supplementary Table 1"
-) {
+abundance_to_cypher_datum <- function(dataset_label = "Supplementary Table 1") {
   st1 <- read_biomass_st1() %>% 
     scale_values(scale = 1000000L)
-
+  place_labels <- names(st1)[-c(1, length(st1))]
+  statements <- purrr::map(place_labels, function(label) {
+    purrr::map2(
+      select(st1, Year), 
+      select(st1, label), 
+      function(year, value) {
+        build_datum_create_strings(
+          year, 
+          value, 
+          unit = 'count', 
+          place_label = label
+        )
+      }
+    )
+  })
 }
