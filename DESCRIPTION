@@ -1,6 +1,6 @@
 Package: statusAndTrends
 Title: Utilities to Load and Analyze Data from the Salmon Status and Trends Workshop
-Version: 0.0.0.9001
+Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Scott", family = "Akenhead", role = c("aut", "cre"), email = "scott@s4s.com"),
     person(given = "Jim", family = "Tyhurst", role = c("aut"), email = "jim@jimtyhurst.com")
