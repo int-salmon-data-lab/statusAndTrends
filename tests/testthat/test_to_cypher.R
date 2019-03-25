@@ -24,7 +24,7 @@ test_that("Parameters are injected into a CREATE statement", {
   
   # Verify the MATCH statement
   actual_match_string <- cypher_strings[[2]]
-  expect_match(actual_match_string, "CREATE \\(x)-\\[r:hasPlace\\]->\\(y\\);")
+  expect_match(actual_match_string, "CREATE \\(x)-\\[:hasPlace\\]->\\(y\\);")
   expect_match(actual_match_string, "x:Datum \\{uid: '.+{36}'\\}")  # uid has 36 chars
   expect_match(actual_match_string, sprintf("y:Place \\{label: '%s'\\}", expected_place_label))
 })
@@ -42,4 +42,9 @@ test_that("All values in a data.frame are scaled", {
   # Verify all other columns are scaled.
   expect_equal(scaled$A[[1]], round(97.9 * expected_scale))
   expect_equal(scaled$B[[3]], round(13.4 * expected_scale))
+})
+
+test_that("Abundance relationships are constructed", {
+  actual_data <- abundance_to_cypher_datum()
+  expect_true(length(actual_data) > 0)
 })

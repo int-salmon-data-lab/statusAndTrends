@@ -9,7 +9,7 @@ build_datum_create_strings <- function(
   unit = 'count', 
   place_label
 ) {
-  datum_uid <- uuid::UUIDgenerate()
+  datum_uid <- purrr::map(1:length(year), function(index) {uuid::UUIDgenerate()})
   create_statement <- sprintf(
     "CREATE (n:Datum {value: '%s', unit: '%s', startInterval: '%s-01-01T00:00-UTC', endInterval: '%s-12-31T23:59-UTC', uid: '%s'});", 
     value, 
@@ -19,7 +19,7 @@ build_datum_create_strings <- function(
     datum_uid
   )
   match_statement <- sprintf(
-    "MATCH (x:Datum {uid: '%s'}), (y:Place {label: '%s'}) CREATE (x)-[r:hasPlace]->(y);", 
+    "MATCH (x:Datum {uid: '%s'}), (y:Place {label: '%s'}) CREATE (x)-[:hasPlace]->(y);", 
     datum_uid, 
     place_label
   )
