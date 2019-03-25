@@ -7,10 +7,11 @@ build_datum_create_strings <- function(
   year, 
   value, 
   unit = 'count', 
+  dataset_label,
   place_label
 ) {
-  datum_uid <- uuid::UUIDgenerate()
-  create_statement <- sprintf(
+  datum_uid <- purrr::map(1:length(year), function(index) {uuid::UUIDgenerate()})
+  create_datum_statement <- sprintf(
     "CREATE (n:Datum {value: '%s', unit: '%s', startInterval: '%s-01-01T00:00-UTC', endInterval: '%s-12-31T23:59-UTC', uid: '%s'});", 
     value, 
     unit, 
@@ -18,12 +19,17 @@ build_datum_create_strings <- function(
     year, 
     datum_uid
   )
-  match_statement <- sprintf(
-    "MATCH (x:Datum {uid: '%s'}), (y:Place {label: '%s'}) CREATE (x)-[r:hasPlace]->(y);", 
+  contains_statement <- sprintf(
+    "MATCH (x:Dataset {label: '%s'}), (y:Datum {uid: '%s'}) CREATE (x)-[:contains]->(y);", 
+    dataset_label,
+    datum_uid
+  )
+  place_statement <- sprintf(
+    "MATCH (x:Datum {uid: '%s'}), (y:Place {label: '%s'}) CREATE (x)-[:hasPlace]->(y);", 
     datum_uid, 
     place_label
   )
-  return(c(create_statement, match_statement))
+  return(c(create_datum_statement, contains_statement, place_statement))
 }
 
 #' @export
@@ -49,6 +55,7 @@ abundance_to_cypher_datum <- function(dataset_label = "Supplementary Table 1") {
           year, 
           value, 
           unit = 'count', 
+          dataset_label = dataset_label,
           place_label = label
         )
       }
