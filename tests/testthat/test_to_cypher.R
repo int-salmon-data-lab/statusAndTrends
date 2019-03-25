@@ -9,10 +9,12 @@ test_that("Parameters are injected into a CREATE statement", {
   expected_year <- 1952
   expected_value <- 6572562
   expected_unit <- "count"
+  expected_dataset_label <- "Summary Table 1"
   expected_place_label <- "Kod"
   cypher_strings <- build_datum_create_strings(
     year = expected_year, 
     value = expected_value, 
+    dataset_label = expected_dataset_label,
     place_label = expected_place_label
   )
 
@@ -22,8 +24,14 @@ test_that("Parameters are injected into a CREATE statement", {
   expect_match(actual_create_string, "value: '6572562'")
   expect_match(actual_create_string, "uid: '.+{36}'")  # uid has 36 chars
   
-  # Verify the MATCH statement
-  actual_match_string <- cypher_strings[[2]]
+  # Verify the MATCH dataset statement
+  actual_match_dataset_string <- cypher_strings[[2]]
+  expect_match(actual_match_dataset_string, "CREATE \\(x)-\\[:contains\\]->\\(y\\);")
+  expect_match(actual_match_dataset_string, "x:Dataset \\{label: 'Summary Table 1'\\}")
+  expect_match(actual_match_dataset_string, "y:Datum \\{uid: '.+{36}'\\}", expected_place_label)  # uid has 36 chars
+  
+  # Verify the MATCH place statement
+  actual_match_string <- cypher_strings[[3]]
   expect_match(actual_match_string, "CREATE \\(x)-\\[:hasPlace\\]->\\(y\\);")
   expect_match(actual_match_string, "x:Datum \\{uid: '.+{36}'\\}")  # uid has 36 chars
   expect_match(actual_match_string, sprintf("y:Place \\{label: '%s'\\}", expected_place_label))
