@@ -32,4 +32,6 @@ CREATE (n:Place {type: 'marine', label: 'SEAK', name: 'Southeast Alaska and Yaku
 CREATE (n:Place {type: 'marine', label: 'NBC', name: 'northern British Columbia', description: 'Survey area of northern British Columbia as specified in Ruggerone and Irvine (2018).'});
 CREATE (n:Place {type: 'marine', label: 'SBC', name: 'southern British Columbia', description: 'Survey area of southern British Columbia as specified in Ruggerone and Irvine (2018).'});
 CREATE (n:Place {type: 'marine', label: 'WC', name: 'West Coast', description: 'Survey area of the West Coast of the United States as specified in Ruggerone and Irvine (2018).'});
+CREATE (n:Place {type: 'marine', label: 'WA', name: 'Washington', description: 'Survey area of Washington State of the United States as specified in Ruggerone and Irvine (2018).'});
+
 MATCH (x:Document {label: 'Ruggerone & Irvine (2018)'}),(y:Place {type: 'marine'}) CREATE (x)-[:describes]->(y);
