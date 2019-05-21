@@ -122,7 +122,7 @@ I heard many features mentioned during the workshop:
         * sex
         * smolt size
         * diet samples
-        * stomach fulness index
+        * stomach fullness index
         * capture location
         * capture depth
     * group characteristics / aggregate measures
@@ -131,6 +131,7 @@ I heard many features mentioned during the workshop:
         * variability with individual stocks
         * abundance
         * recruitment
+        * catch
         * escapement
         * exploitation rates
         * maturation age
