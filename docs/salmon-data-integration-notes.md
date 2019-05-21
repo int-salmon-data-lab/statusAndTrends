@@ -6,7 +6,7 @@ I captured a few thoughts in outline form after attending [The Second NPAFC-IYS 
 
 **Table of Contents**
 
-1. [Independent aspects of a complete solution](#independent-aspects-of-a-complete solution)
+1. [Independent aspects of a complete solution](#independent-aspects-of-a-complete-solution)
 1. [Possible solution 1: All data centralized in one database](#possible-solution-1-all-data-centralized-in-one-database)
 1. [Possible solution 2: Distributed datasets with centralized metadata](#possible-solution-2-distributed-datasets-with-centralized-metadata)
 1. [Competitive analysis](#competitive-analysis)
@@ -68,8 +68,8 @@ This solution is what has been prototyped so far.
 
 ### Advantages of a distributed solution
 
-* Data producers, who know their own data best, are responsible for maintaining the data and any associated metdata. ISDL can provide guidance or even a hosting solution, if necessary, but we expect that researchers will host the data themselves or use an existing hosting solution for scientific data (see Competitive Analysis below).
-* The metadata resides in a (Neo4j) database that is separate from the dataset it describes, so one can be changed without affecting the other.
+* Data producers, who know their own data best, are responsible for maintaining the data and any associated metdata. ISDL can provide guidance or even a hosting solution, if necessary, but we expect that researchers will host the data themselves or use an existing hosting solution for scientific data (see [Competitive analysis](#competitive-analysis) below).
+* The metadata resides in a (Neo4j graph) database that is separate from the dataset it describes, so one can be changed without affecting the other.
 * Much less work is required to import metadata compared to trying to standardizing and importing a full dataset.
 
 ### Disadvantages of a distributed solution
@@ -107,7 +107,7 @@ There are other tools for implementing a data portal, rather than building your 
 * Socrata : http://open-source.socrata.com/
 * The Dataverse Project : https://dataverse.org/
 
-Disclaimer: I came across these previously when working on a project for public government (civic) data. I have not investigated these, although I know that some scientific organizations have used CKAN as a portal to their public data.
+Disclaimer: I came across these previously when working on a project for public government (civic) data. I have not investigated these for relevance to scientific data, although I know that some scientific organizations have used CKAN as a portal to their public data.
 
 ## Types of data
 
@@ -174,6 +174,7 @@ I heard many features mentioned during the workshop:
 * Data _producers_ must receive some benefit from the system. Otherwise, they will not be motivated to share their data. Some possible benefits to a data producer:
     * Automated reporting of usage: The system can track how frequently a dataset is used. This may lead to some measure of prestige.
     * Citation of their work. The metadata makes it easy for data consumers to cite sources correctly.
+    * Their work might be found more easily and more frequently.
 * Data _consumers_ obviously benefit from the system, because they can find data more easily.
 * Start small and build incrementally.
 * Specify criteria for prioritizing datasets to be included, so that:
